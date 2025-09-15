@@ -1,0 +1,14 @@
+# Папка для изображений
+
+Поместите изображения в следующие папки:
+
+## Hero фон:
+- `/images/hero-bg.jpg` - фоновое изображение для главной секции
+
+## Изображения услуг:
+- `/images/services/hot-rolled-pipes.jpg` - Горячекатаные бесшовные трубы
+- `/images/services/cold-rolled-pipes.jpg` - Холоднокатаные бесшовные трубы  
+- `/images/services/boiler-pipes.jpg` - Трубы для котлов и пароперегревателей
+- `/images/services/oil-pipes.jpg` - Нефтепроводные трубы
+- `/images/services/gas-pipes.jpg` - Газопроводные трубы
+- `/images/services/construction-pipes.jpg` - Трубы для строительных конструкций
