@@ -111,20 +111,33 @@ const Header = () => {
               className="flex items-center space-x-1 lg:space-x-2 bg-green-500 hover:bg-green-600 text-white px-2 py-2 lg:px-4 lg:py-2 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <MessageCircle size={14} className="lg:w-4 lg:h-4" />
-              <span className="font-medium text-sm lg:text-base hidden lg:inline">WhatsApp</span>
+              <span className="font-medium text-sm lg:text-base">Написать в WhatsApp</span>
             </motion.a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${isScrolled ? 'text-gray-900 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-              }`}
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </motion.button>
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center space-x-2">
+            <motion.a
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              href={`https://wa.me/${data.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors shadow-lg"
+            >
+              <MessageCircle size={18} />
+            </motion.a>
+            
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`p-2 rounded-lg transition-colors ${isScrolled ? 'text-gray-900 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+                }`}
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -146,22 +159,13 @@ const Header = () => {
                     {item.label}
                   </button>
                 ))}
-                <div className="px-4 pt-4 border-t border-gray-200 space-y-3">
+                <div className="px-4 pt-4 border-t border-gray-200">
                   <a
                     href={`tel:${data.contacts.phone}`}
                     className="flex items-center space-x-2 text-primary-600 font-medium"
                   >
                     <Phone size={18} />
                     <span>{data.contacts.phone}</span>
-                  </a>
-                  <a
-                    href={`https://wa.me/${data.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-green-600 font-medium"
-                  >
-                    <MessageCircle size={18} />
-                    <span>WhatsApp</span>
                   </a>
                 </div>
               </div>
