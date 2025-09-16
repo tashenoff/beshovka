@@ -1,25 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { 
-  Circle, 
-  Cog, 
-  Flame, 
-  Droplets, 
-  Wind, 
-  Building,
   ArrowRight,
   CheckCircle
 } from 'lucide-react'
 import data from '../data/content.json'
-
-const iconMap = {
-  circle: Circle,
-  cog: Cog,
-  flame: Flame,
-  droplets: Droplets,
-  wind: Wind,
-  building: Building
-}
 
 const Services = () => {
   return (
@@ -46,10 +31,7 @@ const Services = () => {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {data.services.map((service, index) => {
-            const IconComponent = iconMap[service.icon] || Circle
-            
-            return (
+          {data.services.map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -67,11 +49,6 @@ const Services = () => {
                       alt={service.title}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-4 left-4">
-                      <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 text-primary-600" />
-                      </div>
-                    </div>
                   </div>
                 </div>
 
@@ -118,7 +95,7 @@ const Services = () => {
                 </motion.button>
               </motion.div>
             )
-          })}
+          )}
         </div>
 
         {/* Bottom CTA */}
@@ -152,7 +129,6 @@ const Services = () => {
                 className="btn-secondary inline-flex items-center space-x-2"
               >
                 <span>Позвонить сейчас</span>
-                <span className="font-mono text-sm">{data.contacts.phone}</span>
               </a>
             </div>
           </div>

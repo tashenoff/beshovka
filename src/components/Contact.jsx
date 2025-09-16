@@ -34,10 +34,25 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
+    // Формируем сообщение для WhatsApp
+    const whatsappMessage = `*Новая заявка с сайта*%0A%0A` +
+      `👤 *Имя:* ${formData.name}%0A` +
+      `📞 *Телефон:* ${formData.phone}%0A` +
+      `${formData.email ? `📧 *Email:* ${formData.email}%0A` : ''}` +
+      `${formData.company ? `🏢 *Компания:* ${formData.company}%0A` : ''}` +
+      `💬 *Сообщение:* ${formData.message}`
+    
+    // Открываем WhatsApp с предзаполненным сообщением
+    const whatsappUrl = `https://wa.me/${data.contacts.whatsapp.replace(/[^0-9]/g, '')}?text=${whatsappMessage}`
+    
     setTimeout(() => {
       setIsSubmitting(false)
       setSubmitStatus('success')
+      
+      // Открываем WhatsApp
+      window.open(whatsappUrl, '_blank')
+      
+      // Очищаем форму
       setFormData({
         name: '',
         phone: '',
@@ -48,7 +63,7 @@ const Contact = () => {
       
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000)
-    }, 1500)
+    }, 1000)
   }
 
   return (
@@ -213,7 +228,7 @@ const Contact = () => {
                   )}
                   <span className="font-medium">
                     {submitStatus === 'success'
-                      ? 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.'
+                      ? 'Заявка сформирована! Сейчас откроется WhatsApp для отправки.'
                       : 'Произошла ошибка при отправке. Попробуйте еще раз.'}
                   </span>
                 </motion.div>
