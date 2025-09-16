@@ -11,19 +11,19 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    
+
     // Use passive listener for better performance on mobile
     window.addEventListener('scroll', handleScroll, { passive: true })
-    
+
     // Also handle resize events for mobile viewport changes
     const handleResize = () => {
       // Force a repaint to fix mobile browser issues
       document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`)
     }
-    
+
     window.addEventListener('resize', handleResize, { passive: true })
     handleResize() // Initial call
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
@@ -41,7 +41,6 @@ const Header = () => {
   const menuItems = [
     { label: 'Услуги', id: 'services' },
     { label: 'Преимущества', id: 'advantages' },
-    { label: 'Отзывы', id: 'testimonials' },
     { label: 'FAQ', id: 'faq' },
     { label: 'Контакты', id: 'contact' }
   ]
@@ -50,27 +49,25 @@ const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed-header transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+      className={`fixed-header transition-all duration-300 ${isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center space-x-2 sm:space-x-3"
           >
             <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm sm:text-lg">СТ</span>
+              <span className="text-white font-bold text-sm sm:text-lg">ТM</span>
             </div>
             <div>
-              <h1 className={`font-display font-bold text-lg sm:text-xl ${
-                isScrolled ? 'text-gray-900' : 'text-white'
-              }`}>
+              <h1 className={`font-display font-bold text-lg sm:text-xl ${isScrolled ? 'text-gray-900' : 'text-white'
+                }`}>
                 {data.company.name}
               </h1>
             </div>
@@ -85,9 +82,8 @@ const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => scrollToSection(item.id)}
-                className={`font-medium transition-colors hover:text-primary-600 ${
-                  isScrolled ? 'text-gray-700' : 'text-white/90 hover:text-white'
-                }`}
+                className={`font-medium transition-colors hover:text-primary-600 ${isScrolled ? 'text-gray-700' : 'text-white/90 hover:text-white'
+                  }`}
               >
                 {item.label}
               </motion.button>
@@ -124,9 +120,8 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? 'text-gray-900 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-            }`}
+            className={`md:hidden p-2 rounded-lg transition-colors ${isScrolled ? 'text-gray-900 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+              }`}
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </motion.button>

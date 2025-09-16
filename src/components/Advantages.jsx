@@ -76,7 +76,7 @@ const Advantages = () => {
           className="mt-20"
         >
           <div className="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-8 lg:p-12 text-white">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -107,15 +107,7 @@ const Advantages = () => {
                 <div className="text-primary-100">видов продукции</div>
               </motion.div>
               
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <div className="font-display font-bold text-4xl lg:text-5xl mb-2">24/7</div>
-                <div className="text-primary-100">техническая поддержка</div>
-              </motion.div>
+          
             </div>
           </div>
         </motion.div>
